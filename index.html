@@ -161,14 +161,7 @@ footer{color:var(--ink-soft);font-size:12.5px;text-align:center;padding:0 0 14px
     var ohneE = b.url.replace(/([?&])e=1(&|$)/, function(m, v, n){ return n ? v : ''; }); aussen.href = ohneE; hinweisLink.href = ohneE;
     // Jeder Bereich wird nur einmal geladen und bleibt beim Umschalten erhalten (Anmeldung, Eingaben)
     Object.keys(frames).forEach(function (k) { frames[k].hidden = k !== b.id; });
-    if (!frames[b.id]) {
-      var f = document.createElement('iframe');
-      f.title = b.titel; f.src = b.url; f.loading = 'eager';
-      f.setAttribute('allow', 'clipboard-read; clipboard-write');
-      f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
-      f.addEventListener('load', function () { geladen[b.id] = true; if (aktuell === b.id) fertig(); });
-      frames[b.id] = f; rahmen.insertBefore(f, laden);
-    }
+    erzeuge(b); frames[b.id].hidden = false;
     clearTimeout(uhr); hinweis.hidden = true;
     if (geladen[b.id]) fertig();
     else {
@@ -177,11 +170,21 @@ footer{color:var(--ink-soft);font-size:12.5px;text-align:center;padding:0 0 14px
       uhr = setTimeout(function () { if (!geladen[b.id] && aktuell === b.id) hinweis.hidden = false; }, 12000);
     }
   }
+  // Bereich einmal laden (unsichtbar vorladen geht auch: dann ist das Umschalten sofort da)
+  function erzeuge(b) {
+    if (frames[b.id]) return;
+    var f = document.createElement('iframe');
+    f.title = b.titel; f.src = b.url; f.loading = 'eager'; f.hidden = b.id !== aktuell;
+    f.setAttribute('allow', 'clipboard-read; clipboard-write');
+    f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+    f.addEventListener('load', function () { geladen[b.id] = true; if (aktuell === b.id) fertig(); });
+    frames[b.id] = f; rahmen.insertBefore(f, laden);
+  }
   function fertig() { laden.hidden = true; hinweis.hidden = true; clearTimeout(uhr); }
 
   window.addEventListener('hashchange', function () { var id = location.hash.slice(1); if (finde(id)) zeige(id, false); });
   var start = finde(location.hash.slice(1)) ? location.hash.slice(1) : (finde(gemerkt()) ? gemerkt() : (liste[0] && liste[0].id));
-  if (start) zeige(start, false);
+  if (start) { zeige(start, false); setTimeout(function () { liste.forEach(erzeuge); }, 2500); }
   else { laden.hidden = true; untertitel.textContent = 'Noch keine Bereiche eingetragen (bereiche.js).'; }
 })();
 </script>
