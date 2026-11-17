@@ -35,16 +35,16 @@
 }
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
-body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body);display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--f-body);display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden}
 .wrap{max-width:1680px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 
 /* Kopf wie bisher: dunkles Band mit Wappen, darunter Lehm-Leiste */
 .banner-top{background:var(--band);background:radial-gradient(120% 160% at 50% 0%,color-mix(in srgb,var(--band) 78%,var(--clay)) 0%,var(--band) 62%);color:var(--band-ink)}
-.banner-inner{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,34px);padding-block:clamp(12px,2.2vw,22px)}
-.banner-inner img{height:clamp(38px,6vw,60px);width:auto;flex:none}
+.banner-inner{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,34px);padding-block:clamp(8px,1.4vw,14px)}
+.banner-inner img{height:clamp(32px,4.5vw,48px);width:auto;flex:none}
 .banner-title{text-align:center;min-width:0}
 .kicker{display:block;font-family:var(--f-display);font-weight:700;font-size:clamp(11px,1.5vw,13px);letter-spacing:.5em;padding-left:.5em;opacity:.72;margin-bottom:4px}
-h1{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(22px,4.4vw,40px);letter-spacing:.08em;text-transform:uppercase;line-height:1.1;text-wrap:balance}
+h1{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(20px,3.4vw,32px);letter-spacing:.08em;text-transform:uppercase;line-height:1.1;text-wrap:balance}
 .banner-sub{background:var(--clay);color:var(--clay-ink)}
 .banner-sub .wrap{padding-block:7px;text-align:center;font-family:var(--f-display);font-weight:700;font-size:clamp(13px,1.8vw,16px);letter-spacing:.04em;min-height:1.5em}
 
@@ -63,8 +63,8 @@ h1{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(22px,4.
 .aussen svg{width:14px;height:14px}
 
 /* Inhalt: der gewaehlte Bereich fuellt den Rest der Seite */
-main{flex:1;width:100%;display:flex;flex-direction:column;padding-block:10px 12px}
-.rahmen{position:relative;flex:1;min-height:calc(100vh - 210px);background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+main{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;padding-block:8px 8px}
+.rahmen{position:relative;flex:1;min-height:0;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
 .rahmen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent}
 .rahmen iframe[hidden]{display:none}
 .laden{position:absolute;inset:0;display:grid;place-items:center;gap:10px;align-content:center;color:var(--ink-soft);font-size:14px;pointer-events:none}
@@ -75,13 +75,13 @@ main{flex:1;width:100%;display:flex;flex-direction:column;padding-block:10px 12p
 .hinweis{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);max-width:calc(100% - 32px);background:var(--paper-2);border:1px solid var(--line);border-left:4px solid var(--clay);border-radius:8px;padding:10px 14px;font-size:13.5px;box-shadow:var(--shadow)}
 .hinweis[hidden]{display:none}
 .hinweis a{color:var(--clay);font-weight:700}
-footer{color:var(--ink-soft);font-size:12.5px;text-align:center;padding:0 0 14px}
+footer{color:var(--ink-soft);font-size:12px;text-align:center;padding:0 0 6px}
 
 @media (max-width:640px){
   .tab{padding:11px 12px 9px;font-size:13.5px;letter-spacing:.05em}
   .aussen span{display:none}
   main{padding-block:10px 10px}
-  .rahmen{border-radius:10px;min-height:calc(100dvh - 190px)}
+  .rahmen{border-radius:10px;min-height:0}
 }
 </style>
 </head>
