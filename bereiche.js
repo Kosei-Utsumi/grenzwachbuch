@@ -1,7 +1,7 @@
 // Bereiche der Suna-Startseite (kosei-utsumi.github.io/suna). Neuer Bereich = neue Zeile. aktiv:false blendet aus.
 // ?e=1 = eingebettet: die Seiten blenden ihre eigene Bereichsleiste aus. symbol: schild | rolle | liste | stern
 window.SUNA_BEREICHE = [
-  { id: 'grenzwache', titel: 'Grenzwache', untertitel: 'Grenzwachbuch · Schichten, Strichliste, Auswertung', symbol: 'schild',
+  { id: 'patrouillen', titel: 'Patrouillen', untertitel: 'Patrouillen · Land der Dürre, Kirschblütenland, Sumpfland · Einsatzliste', symbol: 'schild',
     url: 'https://script.google.com/macros/s/AKfycbzs7IpSIk-e0hXX5C2VG-xUr7vgx8e88kzTBMyN-6-IVVqBL-GsVo5Dp6t-J-7Uq_V7/exec?e=1' },
   { id: 'dienstblatt', titel: 'Dienstblatt', untertitel: 'Personal · Dienstplan', symbol: 'liste',
     url: 'https://script.google.com/macros/s/AKfycbzs7IpSIk-e0hXX5C2VG-xUr7vgx8e88kzTBMyN-6-IVVqBL-GsVo5Dp6t-J-7Uq_V7/exec?seite=dienstblatt&e=1' },
